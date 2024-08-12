@@ -32,10 +32,15 @@ Real-World Application
     Using a prime number as the size of a hash table helps improve the distribution of hash values and reduces the likelihood of collisions, particularly in probing strategies like quadratic probing and double hashing. Here's why:
 1. Uniform Distribution of Hash Values
 
-When a prime number is used as the size of the hash table, it ensures that the hash values are more evenly distributed across the table. This is because prime numbers have no divisors other than 1 and themselves, which minimizes patterns in the distribution of keys that might otherwise cause clustering.
+When a prime number is used as the size of the hash table, it ensures that the hash values are more evenly distributed across the table. 
+This is because prime numbers have no divisors other than 1 and themselves, which minimizes patterns in the distribution of keys that might otherwise cause clustering.
+
 2. Reduced Collisions
 
-Collisions occur when two different keys produce the same hash value, causing them to be placed in the same index of the hash table. When the size of the hash table is a prime number, the modulus operation (hash % tableSize) tends to produce a more uniform spread of indices. This reduces the likelihood of multiple keys hashing to the same index, especially when the keys have common factors.
+Collisions occur when two different keys produce the same hash value, causing them to be placed in the same index of the hash table. 
+When the size of the hash table is a prime number, the modulus operation (hash % tableSize) tends to produce a more uniform spread of indices. 
+This reduces the likelihood of multiple keys hashing to the same index, especially when the keys have common factors.
+
 3. Better Performance in Probing
 
 In probing methods (like quadratic probing or double hashing), using a prime number as the table size ensures that the probe sequence covers all possible slots in the table before repeating. This is crucial in avoiding infinite loops and ensuring that all slots can be probed.
@@ -47,6 +52,7 @@ In double hashing, you have two hash functions:
     hash2(k)=p−(kmod  p)hash2(k)=p−(kmodp)
 
 Where p is typically a prime number less than tableSize. If tableSize is also a prime number, the combination of these two hash functions ensures that the sequence of probes will be more varied and cover more slots, reducing the likelihood of collisions.
+
 4. Avoidance of Common Factors
 
 If the table size is not a prime number and has common factors with the keys, it may cause certain slots to be favored over others, leading to clustering. For example, if the table size is an even number (like a power of 2) and many of the keys are also even, the modulus operation might produce indices that are clustered in certain parts of the table. A prime number helps avoid this by not sharing common factors with the keys, thus spreading them more evenly
