@@ -21,4 +21,12 @@ Visit the Repository: Go to the GitHub mirror and navigate to src/java.base/shar
 
 Search for Key Methods: Look for methods like resize, put, get, and hash.
 
+Real-World Application
+
+    Java's HashMap: Java's HashMap uses an array size that is a power of 2. This allows it to use bitwise operations to calculate the index, which is faster than using modulus with a prime number.
+
+    Custom Implementations: When implementing a hash table yourself (e.g., using quadratic or double hashing), you might prefer using a prime number as the table size, especially if you're dealing with potential clustering issues.
+
+    
+
 Examine Collision Resolution: Check how HashMap handles collisions and the transformation of linked lists to trees.
