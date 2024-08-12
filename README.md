@@ -11,6 +11,11 @@ Physical Memory (RAM): The total memory available in the system limits how much 
 
 JVM Heap Space: In Java, the JVM has a heap space that is allocated for your application. The size of this heap is also a limiting factor. You can configure the heap size using JVM options (-Xms for initial heap size and -Xmx for maximum heap size). If the HashMap grows too large and the heap space is exhausted, the JVM will throw an OutOfMemoryError.
 
+Memory Estimation: Engineers estimate the memory usage of the data structures they plan to use, such as hash tables. This involves understanding the typical size of objects, the number of objects, and the overhead of the data structure itself.
+Profiling and Monitoring: Engineers use tools like profilers and memory analyzers during development to monitor the actual memory usage and adjust accordingly. They might run tests with different loads to see how the system behaves under stress.
+Load Factor and Capacity Tuning: Engineers decide on initial capacities and load factors for hash tables based on their understanding of expected data sizes and access patterns. These decisions are often revisited during testing and profiling.
+Scalability Considerations: If the application is expected to handle large amounts of data or a high number of users, engineers might consider distributed caching or sharding data across multiple servers to avoid overloading a single machine's memory.
+
 Resources used to learn about this topic:
 Visit the Repository: Go to the GitHub mirror and navigate to src/java.base/share/classes/java/util/HashMap.java.
 
