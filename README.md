@@ -57,6 +57,33 @@ Where p is typically a prime number less than tableSize. If tableSize is also a 
 
 If the table size is not a prime number and has common factors with the keys, it may cause certain slots to be favored over others, leading to clustering. For example, if the table size is an even number (like a power of 2) and many of the keys are also even, the modulus operation might produce indices that are clustered in certain parts of the table. A prime number helps avoid this by not sharing common factors with the keys, thus spreading them more evenly
 
+How Automatic Resizing Works:
+
+    Load Factor:
+        The load factor is a measure of how full the hash table is allowed to get before it needs to be resized. The default load factor in HashMap is 0.75, meaning the table will resize when it is 75% full.
+
+    Triggering a Resize:
+        When the number of elements in the HashMap exceeds the product of the load factor and the current capacity, the HashMap will automatically resize itself.
+        For example, if the initial capacity is 16 and the load factor is 0.75, the table will resize when the 13th element is added (because 16 * 0.75 = 12, and exceeding this threshold triggers the resize).
+
+    Resizing Process:
+        When resizing occurs, the HashMap creates a new internal array with double the capacity of the old array.
+        It then rehashes all the existing entries into the new array. This is necessary because the index for each entry in the new array is based on the new array's size, which has changed.
+
+    Performance Considerations:
+        Resizing is an expensive operation because it involves rehashing all the entries and placing them into new positions in the larger array.
+        However, this operation happens infrequently (only when the load factor threshold is reached), and it's a trade-off to ensure the HashMap continues to operate efficiently.
+
+        Map<String, Integer> map = new HashMap<>(16, 0.75f);
+
+// Add elements
+for (int i = 0; i < 13; i++) {
+    map.put("Key" + i, i);
+}
+
+// At this point, the HashMap resizes itself because the number of elements exceeds the threshold.
+
+
     
 
 Examine Collision Resolution: Check how HashMap handles collisions and the transformation of linked lists to trees.
