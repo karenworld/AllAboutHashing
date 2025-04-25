@@ -1,4 +1,4 @@
-I got asked questions regarding hashing like it is some kind of rocket science i decided to take a look in more details.
+I got asked questions regarding hashing during a few interview i decided to take a look in more details.
 This repo recorded the types of collision handling methods such as linear probing, quadratic probing etc.
 
 Practical Implications
